@@ -27,9 +27,14 @@ app.use("/api/",userRoutes)
 app.get('/', (req, res) => {
     res.send("<h1>Backend application using NodeJS, Express and MongoDB</h1>");
 });
-var cors = require('cors')
+const cors=require("cors");
+const corsOptions ={
+   origin:'*', 
+   credentials:true,            //access-control-allow-credentials:true
+   optionSuccessStatus:200,
+}
 
-app.use(cors()) // Use this after the variable declaration
+app.use(cors(corsOptions)) // Use this after the variable declaration
 
 app.listen(8081, () => {
     console.log("Server is listening on port 8081");
